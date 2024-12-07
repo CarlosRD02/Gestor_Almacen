@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Entregar Pedido{% endblock %}
+
+{% block content %}
+<h1>Entregar Pedido</h1>
+<p>Producto: {{ pedido.producto.nombre }}</p>
+<p>Cantidad: {{ pedido.cantidad }}</p>
+<p>Fecha del Pedido: {{ pedido.fecha_pedido }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">Confirmar Entrega</button>
+</form>
+
+<a href="{% url 'listar_pedidos' %}" class="btn btn-secondary">Cancelar</a>
+{% endblock %}

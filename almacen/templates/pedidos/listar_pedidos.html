@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Pedidos{% endblock %}
+
+{% block content %}
+<h1>Lista de Pedidos</h1>
+<a href="{% url 'crear_pedido' %}" class="btn btn-primary">Añadir Pedido</a>  
+<table class="table">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Fecha del Pedido</th>
+            <th>Fecha de Entrega</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pedido in pedidos %}
+        <tr>
+            <td>{{ pedido.producto.nombre }}</td>
+            <td>{{ pedido.cantidad }}</td>
+            <td>{{ pedido.fecha_pedido }}</td>
+            <td>{{ pedido.fecha_entrega|default:"No entregado" }}</td>
+            <td>
+                {% if not pedido.fecha_entrega %}
+                <a href="{% url 'entregar_pedido' pedido.id %}" class="btn btn-primary">Entregar</a>
+                {% endif %}
+                <a href="{% url 'eliminar_pedido' pedido.id %}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'listar_productos' %}" class="btn btn-secondary">Ver Productos</a>
+<a href="{% url 'listar_proveedores' %}" class="btn btn-secondary">Ver Proveedores</a>
+
+{% endblock %}

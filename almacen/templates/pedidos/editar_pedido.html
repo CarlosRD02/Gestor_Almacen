@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Pedido{% endblock %}
+
+{% block content %}
+<h1>Editar Pedido</h1>
+<p>Producto: {{ pedido.producto.nombre }}</p>
+<p>Cantidad Actual: {{ pedido.cantidad }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="cantidad">Nueva Cantidad:</label>
+        <input type="number" name="cantidad" min="1" value="{{ pedido.cantidad }}" required class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+</form>
+
+<a href="{% url 'listar_pedidos' %}" class="btn btn-secondary">Cancelar</a>
+{% endblock %}

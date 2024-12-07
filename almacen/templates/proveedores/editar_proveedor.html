@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Proveedor{% endblock %}
+
+{% block content %}
+<h1>Editar Proveedor: {{ proveedor.nombre }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+</form>
+<a href="{% url 'listar_proveedores' %}" class="btn btn-secondary">Cancelar</a>
+{% endblock %}

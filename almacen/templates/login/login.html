@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load form_tags %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="fondo-imagen h-100 d-flex justify-content-center align-items-center">
+    <div class="form-container p-4"> <!-- Agregar mt-5 para margen superior -->
+        <h2 class="text-center">Iniciar Sesión</h2>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="{{ form.username.id_for_label }}" class="form-label">Nombre de Usuario</label>
+                {{ form.username|add_class:"form-control" }}  <!-- Aplicar clase con el template tag -->
+            </div>
+            <div class="mb-3">
+                <label for="{{ form.password.id_for_label }}" class="form-label">Contraseña</label>
+                {{ form.password|add_class:"form-control" }}  <!-- Aplicar clase con el template tag -->
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+        </form>
+        <br>
+        {{ form.non_field_errors }}
+    </div>
+</div>
+{% endblock %}

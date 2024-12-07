@@ -1,0 +1,71 @@
+body{
+    overflow: hidden;
+    height: 100vh;
+}
+
+
+.navbar {
+    background-color: #a3ea71;
+    padding: 8px;
+}
+
+.navbar-nav .nav-link {
+    padding: 10px 20px;
+    margin: 0 5px;
+    color: black; 
+    background-color: #a3ea71;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #57952a;
+}
+
+.container-fluid {
+    max-width: 1200px;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.card {
+    height: 150px; /* Altura fija para las tarjetas */
+}
+
+
+.fondo-imagen{
+    /* background-image: url('../images/images.jpeg'); */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 100vh; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+}
+
+
+.form-container{
+    background-color: rgba(0, 0, 0, 0.0); /* Fondo semi-transparente para el formulario */
+    padding: 20px;
+    border-radius: 11px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(81, 87, 84, 0.1); /* Sombra para dar profundidad */
+    border: 1px solid rgba(23, 53, 249, 0.805); /* Borde blanco con transparencia */
+    margin-top: 60px;
+}
+
+/* Estilos personalizados para los inputs */
+input[type="text"],
+input[type="password"] {
+    width: 300px; /* Ajusta el ancho a tu gusto */
+    height: 30px; /* Ajusta la altura a tu gusto */
+    margin-bottom: 20px; /* Espacio entre los inputs y el botón */
+}
+
+/* Centrar el h1 */
+.form-container h2 {
+    text-align: center; /* Centra el texto horizontalmente */
+    color: black; /* Asegúrate de que el color sea visible sobre el fondo */
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+

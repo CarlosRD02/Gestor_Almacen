@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    {% load static%}
+    <title>{% block title %}Gestión de Almacén{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="icon" href="{% static 'icons/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <a class="navbar-brand" href="{% url 'dashboard' %}">Almacén</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a></li>
+                    {% if user.is_authenticated and user.is_superuser %}
+                        <li class="nav-item"><a class="nav-link" href="/admin/">Administración</a></li>
+                        <li class="nav-item"><a class="nav-link" href="registro">Crear Usuario</a></li>
+
+                    {% endif %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'listar_proveedores' %}">Proveedores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'listar_productos' %}">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'listar_pedidos' %}">Pedidos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'user_logout' %}">Cerrar Sesión</a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'user_login' %}">Iniciar Sesión</a></li>
+                   
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script src="{% static 'js/form-validation.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
